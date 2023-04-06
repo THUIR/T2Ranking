@@ -95,6 +95,10 @@ After training the model, you can evaluate the model by running the following co
 python src/convert2trec.py output/res.step-20 && python src/msmarco_eval.py data/qrels.retrieval.dev.tsv output/res.step-20.trec && path_to/trec_eval -m ndcg_cut.5 data/qrels.dev.tsv res.step-20.trec
 ```
 
+## License
+The dataset is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
+
+
 ## Citation
 If you use this dataset in your research, please cite our paper:
 ```
