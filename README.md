@@ -26,17 +26,6 @@ Compared with existing datasets, T2Ranking dataset has the following characteris
 ## Data
 The whole dataset can be downloaded through [huggingface](https://huggingface.co/datasets/THUIR/T2Ranking), and the data formats are presented in the following table.
 
-
-<style>
-.center 
-{
-  width: auto;
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-
 <div class="center">
 
 | Description                                           | Filename                                                                                                                |                        Num Records | Format                                                         |
