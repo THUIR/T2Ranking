@@ -36,8 +36,8 @@ The whole dataset can be downloaded through [huggingface](https://huggingface.co
 | Queries     Test                          | queries.test.tsv                                 |                24,832  | tsv: qid, query |
 | Qrels Train                               | qrels.train.tsv                                 |             1,613,421  | TREC qrels format |
 | Qrels Dev                                 | qrels.dev.tsv                                    |      400,536    | TREC qrels format |
-| Qrels Retrieval Train                               | qrels.retrieval.train.tsv                                |            744,663  | TREC qrels format |
-| Qrels Retrieval Dev                               | qrels.retrieval.dev.tsv                                |            118,933  | TREC qrels format |
+| Qrels Retrieval Train                               | qrels.retrieval.train.tsv                                |            744,663  | tsv: qid, pid |
+| Qrels Retrieval Dev                               | qrels.retrieval.dev.tsv                                |            118,933  | tsv: qid, pid |
 |  BM25 Negatives                               | train.bm25.tsv                                |            200,359,731  | tsv: qid, pid, index |
 |  Hard Negatives                               | train.mined.tsv                                |            200,376,001  | tsv: qid, pid, index, score |
 
