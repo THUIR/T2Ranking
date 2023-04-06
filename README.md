@@ -11,7 +11,7 @@ To support the passage ranking research, various benchmark datasets are construc
 To address this problem, we introduce T2Ranking, a large-scale Chinese benchmark for passage ranking. T2Ranking comprises more than 300K queries and over 2M unique passages from real- world search engines. Specifically, we sample question-based search queries from user logs of the Sogou search engine, a popular search system in China. For each query, we extract the content of corresponding documents from different search engines. After model-based passage segmentation and clustering-based passage de-duplication, a large-scale passage corpus is obtained. For a given query and its corresponding passages, we hire expert annotators to provide 4-level relevance judgments of each query-passage pair. 
 
 Table 1: The data statistics of datasets commonly used in passage ranking. FR(SR): First (Second)- stage of passage ranking, i.e., passage Retrieval (Re-ranking).
-<div align=center><img width="800" height="400" src="pic/stat.png"/></div>
+<div align=center><img width="500" height="200" src="pic/stat.png"/></div>
 
 
 The download links and data formats are presented in the following table.
