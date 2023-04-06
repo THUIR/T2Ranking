@@ -94,3 +94,14 @@ After training the model, you can evaluate the model by running the following co
 ```bash
 python src/convert2trec.py output/res.step-20 && python src/msmarco_eval.py data/qrels.retrieval.dev.tsv output/res.step-20.trec && path_to/trec_eval -m ndcg_cut.5 data/qrels.dev.tsv res.step-20.trec
 ```
+
+## Citation
+If you use this dataset in your research, please cite our paper:
+```
+@inproceedings{t2ranking,
+  title={T2Ranking: A large-scale Chinese Benchmark for Passage Ranking},
+  author={Xiaohui Xie, Qian Dong},
+  booktitle={Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year={2023}
+}
+```
