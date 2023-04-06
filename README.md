@@ -40,6 +40,7 @@ The whole dataset can be downloaded through [huggingface](https://huggingface.co
 | Qrels Retrieval Dev                               | qrels.retrieval.dev.tsv                                |            118,933  | TREC qrels format |
 |  BM25 Negatives                               | train.bm25.tsv                                |            200,359,731  | tsv: qid, pid, index |
 |  Hard Negatives                               | train.mined.tsv                                |            200,376,001  | tsv: qid, pid, index, score |
+
 </div>
 
 
