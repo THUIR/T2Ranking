@@ -23,10 +23,8 @@ Compared with existing datasets, T2Ranking dataset has the following characteris
 * By retrieving passage results from multiple commercial search engines and providing complete annotation, we ease the false negative problem to some extent, which is beneficial to providing more accurate evaluation.
 * We design multiple strategies to ensure the high quality of our dataset, such as using a passage segment model and a passage clustering model to enhance the semantic integrity and diversity of passages and employing active learning for annotation method to improve the efficiency and quality of data annotation.
 
-## Data
-The whole dataset can be downloaded through [huggingface](https://huggingface.co/datasets/THUIR/T2Ranking), and the data formats are presented in the following table.
-
-<div class="center">
+## Data Download
+The whole dataset is placed in [huggingface](https://huggingface.co/datasets/THUIR/T2Ranking), and the data formats are presented in the following table.
 
 | Description| Filename|Num Records|Format|
 |-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|----------:|-----------------------------------:|
@@ -34,8 +32,8 @@ The whole dataset can be downloaded through [huggingface](https://huggingface.co
 | Queries     Train                          | queries.train.tsv                                 |                  258,042  | tsv: qid, query |
 | Queries     Dev                          | queries.dev.tsv                                 |                 24,832  | tsv: qid, query |
 | Queries     Test                          | queries.test.tsv                                 |                24,832  | tsv: qid, query |
-| Qrels Train                               | qrels.train.tsv                                 |             1,613,421  | TREC qrels format |
-| Qrels Dev                                 | qrels.dev.tsv                                    |      400,536    | TREC qrels format |
+| Qrels Train for re-ranking                             | qrels.train.tsv                                 |             1,613,421  | TREC qrels format |
+| Qrels Dev for re-ranking          | qrels.dev.tsv                                    |      400,536    | TREC qrels format |
 | Qrels Retrieval Train                               | qrels.retrieval.train.tsv                                |            744,663  | tsv: qid, pid |
 | Qrels Retrieval Dev                               | qrels.retrieval.dev.tsv                                |            118,933  | tsv: qid, pid |
 |  BM25 Negatives                               | train.bm25.tsv                                |            200,359,731  | tsv: qid, pid, index |
@@ -43,11 +41,56 @@ The whole dataset can be downloaded through [huggingface](https://huggingface.co
 
 </div>
 
-
-## Training and Evaluation
-The performance reported in our paper can be reproduced by running the following command:
-
+You can download the dataset by running the following command:
 ```bash
-sh train_dual_encoder.sh
+git lfs install
+git clone https://huggingface.co/datasets/THUIR/T2Ranking
+```
+After downloading, you can find the following files in the folder:
+```
+├── data
+│   ├── collection.tsv
+│   ├── qrels.dev.tsv
+│   ├── qrels.retrieval.dev.tsv
+│   ├── qrels.retrieval.train.tsv
+│   ├── qrels.train.tsv
+│   ├── queries.dev.tsv
+│   ├── queries.test.tsv
+│   ├── queries.train.tsv
+│   ├── train.bm25.tsv
+│   └── train.mined.tsv
+├── script
+│   ├── train_cross_encoder.sh
+│   └── train_dual_encoder.sh
+└── src
+    ├── convert2trec.py
+    ├── dataset_factory.py
+    ├── modeling.py
+    ├── msmarco_eval.py
+    ├── train_cross_encoder.py
+    ├── train_dual_encoder.py
+    └── utils.py
 ```
 
+
+<div class="center">
+
+## Training and Evaluation
+The dual-encoder can be trained by running the following command:
+```bash
+sh script/train_dual_encoder.sh
+```
+After training the model, you can evaluate the model by running the following command:
+```bash
+python src/msmarco_eval.py data/qrels.retrieval.dev.tsv output/res.top1000.step20
+```
+
+
+The cross-encoder can be trained by running the following command:
+```bash
+sh script/train_cross_encoder.sh
+```
+After training the model, you can evaluate the model by running the following command:
+```bash
+python src/convert2trec.py output/res.step-20 && python src/msmarco_eval.py data/qrels.retrieval.dev.tsv output/res.step-20.trec && path_to/trec_eval -m ndcg_cut.5 data/qrels.dev.tsv res.step-20.trec
+```
