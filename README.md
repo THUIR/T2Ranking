@@ -25,6 +25,7 @@ Compared with existing datasets, T2Ranking dataset has the following characteris
 
 ## Data Download
 The whole dataset is placed in [huggingface](https://huggingface.co/datasets/THUIR/T2Ranking), and the data formats are presented in the following table.
+<div class="center">
 
 | Description| Filename|Num Records|Format|
 |-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|----------:|-----------------------------------:|
@@ -73,7 +74,6 @@ After downloading, you can find the following files in the folder:
 ```
 
 
-<div class="center">
 
 ## Training and Evaluation
 The dual-encoder can be trained by running the following command:
