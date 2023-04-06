@@ -26,9 +26,10 @@ Compared with existing datasets, T2Ranking dataset has the following characteris
 ## Data
 The whole dataset can be downloaded through [huggingface](https://huggingface.co/datasets/THUIR/T2Ranking), and the data formats are presented in the following table.
 
+<div class="center">
 
-| Description                                           | Filename                                                                                                                |                        Num Records | Format                                                         |
-|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|----------:|-----------------------------------:|----------------------------------------------------------------|
+| Description| Filename|Num Records|Format|
+|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|----------:|-----------------------------------:|
 | Collection                                | collection.tsv                             |                           2,303,643  | tsv: pid, passage |
 | Queries     Train                          | queries.train.tsv                                 |                  258,042  | tsv: qid, query |
 | Queries     Dev                          | queries.dev.tsv                                 |                 24,832  | tsv: qid, query |
@@ -40,6 +41,7 @@ The whole dataset can be downloaded through [huggingface](https://huggingface.co
 |  BM25 Negatives                               | train.bm25.tsv                                |            200,359,731  | tsv: qid, pid, index |
 |  Hard Negatives                               | train.mined.tsv                                |            200,376,001  | tsv: qid, pid, index, score |
 
+</div>
 
 
 ## Training and Evaluation
