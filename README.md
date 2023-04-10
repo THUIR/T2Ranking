@@ -1,7 +1,7 @@
 # T2Ranking
 
 ## Introduction
-T2Ranking is a large-scale Chinese benchmark for passage ranking. The details about T2Ranking are elaborated in [this paper](https://github.com/THUIR/T2Ranking).
+T2Ranking is a large-scale Chinese benchmark for passage ranking. The details about T2Ranking are elaborated in [this paper](https://arxiv.org/abs/2304.03679#).
 
 
 Passage ranking are important and challenging topics for both academics and industries in the area of Information Retrieval (IR). The goal of passage ranking is to compile a search result list ordered in terms of relevance to the query from a large passage collection. Typically, Passage ranking involves two stages: passage retrieval and passage re-ranking. 
@@ -102,10 +102,12 @@ The dataset is licensed under the [Apache License 2.0](https://www.apache.org/li
 ## Citation
 If you use this dataset in your research, please cite our paper:
 ```
-@inproceedings{t2ranking,
-  title={T2Ranking: A large-scale Chinese Benchmark for Passage Ranking},
-  author={Xiaohui Xie, Qian Dong},
-  booktitle={Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
-  year={2023}
+@misc{xie2023t2ranking,
+      title={T2Ranking: A large-scale Chinese Benchmark for Passage Ranking}, 
+      author={Xiaohui Xie and Qian Dong and Bingning Wang and Feiyang Lv and Ting Yao and Weinan Gan and Zhijing Wu and Xiangsheng Li and Haitao Li and Yiqun Liu and Jin Ma},
+      year={2023},
+      eprint={2304.03679},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR}
 }
 ```
