@@ -268,8 +268,6 @@ def main_cli():
     print(args.model_out_dir)
     os.makedirs(args.model_out_dir, exist_ok=True)
 
-    # we use the same qrels object for both training and validation sets
-    # main(model, dataset, train_pairs, qrels, valid_run, qrels, args.model_out_dir)
     main_multi(args, model, optimizer)
 
 if __name__ == '__main__':
