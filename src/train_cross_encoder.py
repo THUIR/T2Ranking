@@ -255,6 +255,4 @@ if __name__ == '__main__':
     model = DistributedDataParallel(model, device_ids=[local_rank], output_device=local_rank, find_unused_parameters=False)
     os.makedirs(args.model_out_dir, exist_ok=True)
 
-    # we use the same qrels object for both training and validation sets
-    # main(model, dataset, train_pairs, qrels, valid_run, qrels, args.model_out_dir)
     train_cross_encoder(args, model, optimizer)
