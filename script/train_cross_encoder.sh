@@ -27,8 +27,6 @@ output_dir=output
 log_dir=${output_dir}/log
 mkdir -p ${output_dir}
 mkdir -p ${log_dir}
-# pip install https://paddle-wheel.bj.bcebos.com/benchmark/torch-1.12.0%2Bcu113-cp37-cp37m-linux_x86_64.whl 
-# pip install transformers
 echo "=================start train ${OMPI_COMM_WORLD_RANK:-0}=================="
 python -m torch.distributed.launch \
     --log_dir ${log_dir} \
