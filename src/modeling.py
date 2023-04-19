@@ -83,7 +83,7 @@ class DualEncoder(nn.Module):
     def encode_passage(self, passage_inputs):
         mlm_labels = None
         psg_out = self.lm_p(**passage_inputs, return_dict=True)
-        p_hidden = psg_out.hidden_states[-1]  # 需要输入decoder
+        p_hidden = psg_out.hidden_states[-1]  
         p_reps = p_hidden[:, 0]
         return p_reps
 
