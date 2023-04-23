@@ -95,7 +95,7 @@ After training the model, you can evaluate the model by running the following co
 python src/convert2trec.py output/res.step-20 && python src/msmarco_eval.py data/qrels.retrieval.dev.tsv output/res.step-20.trec && path_to/trec_eval -m ndcg_cut.5 data/qrels.dev.tsv res.step-20.trec
 ```
 
-BM25 results
+BM25 on DEV set
 ```bash
 #####################
 MRR @10: 0.35894801237316354
@@ -106,6 +106,27 @@ recall@50: 0.4942572226146033
 #####################
 ```
 
+DPR w/o hard negatives on DEV set
+```bash
+#####################
+MRR @10: 0.35894801237316354
+QueriesRanked: 24831
+recall@1: 0.05098711868967141
+recall@1000: 0.7464097131133757
+recall@50: 0.4942572226146033
+#####################
+```
+
+DPR w/ hard negatives on DEV set
+```bash
+#####################
+MRR @10: 0.35894801237316354
+QueriesRanked: 24831
+recall@1: 0.05098711868967141
+recall@1000: 0.7464097131133757
+recall@50: 0.4942572226146033
+#####################
+```
 
 ## License
 The dataset is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
