@@ -128,6 +128,34 @@ recall@50: 0.7327044025157232
 #####################
 ```
 
+BM25 retrieved+CE reranked on DEV set
+```bash
+#####################
+MRR @10: 0.5188107959009376
+QueriesRanked: 24831
+recall@1: 0.08545219116806242
+recall@1000: 0.7464097131133757
+recall@50: 0.595298153566744
+#####################
+ndcg_cut_20             all     0.4405
+ndcg_cut_100            all     0.4705
+#####################
+```
+
+DPR retrieved+CE reranked on DEV set
+```bash
+#####################
+MRR @10: 0.5508822816845231
+QueriesRanked: 24831
+recall@1: 0.08903406988867588
+recall@1000: 0.9135220125786163
+recall@50: 0.7393720781623112
+#####################
+ndcg_cut_20             all     0.5131
+ndcg_cut_100            all     0.5564
+#####################
+```
+
 ## License
 The dataset is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
