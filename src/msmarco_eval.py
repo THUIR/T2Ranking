@@ -65,7 +65,8 @@ def load_candidate_from_stream(f):
                 qid_to_ranked_candidate_passages[qid] = tmp
             qid_to_ranked_candidate_passages[qid][rank - 1] = pid
         except:
-            raise IOError('\"%s\" is not valid format' % l)
+            # raise IOError('\"%s\" is not valid format' % l)
+            pass
     return qid_to_ranked_candidate_passages
 
 
