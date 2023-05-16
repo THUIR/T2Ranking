@@ -132,9 +132,9 @@ recall@50: 0.7327044025157232
 #####################
 ```
 
-BM25 retrieved+CE reranked on DEV set
+The parameters of corss-encoder are stored in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/cross-encoder.p)
 
-The parameters are stored in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/cross-encoder.p)
+BM25 retrieved+CE reranked on DEV set
 
 The reranked run file is placed in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dpr-retrieved-top1000.tsv)
 ```bash
@@ -151,8 +151,6 @@ ndcg_cut_100            all     0.4705
 ```
 
 DPR retrieved+CE reranked on DEV set
-
-The parameters are stored in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/cross-encoder.p)
 
 The reranked run file is placed in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dpr-retrieved-top1000.tsv)
 ```bash
