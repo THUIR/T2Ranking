@@ -6,7 +6,7 @@ echo "batch size ${batch_size}"
 max_index=200
 retriever_model_name_or_path=checkpoint/bert-base-chinese/
 top1000=data/train.mined.tsv
-warm_start_from=data/dual-encoder.p
+warm_start_from=data/dual-encoder-trained-with-hard-negatives.p
 learning_rate=2e-5
 ### 下面是永远不用改的
 dev_batch_size=256
