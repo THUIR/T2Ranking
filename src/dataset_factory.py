@@ -19,7 +19,7 @@ class PassageDataset(Dataset):
         except:
             self.rank = self.n_procs = 0
         self.args = args
-        self.collection = pd.read_csv(args.collection,sep="\t",header=None, quoting=3)
+        self.collection = pd.read_csv(args.collection,sep="\t", quoting=3)
         self.collection.columns=['pid', 'para']
         self.collection = self.collection.fillna("NA")        
         self.collection.index = self.collection.pid 
@@ -56,7 +56,7 @@ class QueryDataset(Dataset):
     def __init__(self, args):
         self.tokenizer = AutoTokenizer.from_pretrained(args.retriever_model_name_or_path)
         self.args = args
-        self.collection = pd.read_csv(args.dev_query, sep="\t",header=None, quoting=3)
+        self.collection = pd.read_csv(args.dev_query, sep="\t", quoting=3)
         self.collection.columns = ['qid','qry']
         self.collection = self.collection.fillna("NA")
         self.num_samples = len(self.collection)
@@ -80,25 +80,25 @@ class CrossEncoderTrainDataset(Dataset):
         except:
             self.rank = self.n_procs = 0
         self.args = args
-        self.collection = pd.read_csv(args.collection,sep="\t",header=None, quoting=3)
+        self.collection = pd.read_csv(args.collection,sep="\t", quoting=3)
         self.collection.columns=['pid', 'para']
         self.collection = self.collection.fillna("NA")
         self.collection.index = self.collection.pid 
         self.collection.pop('pid')
-        self.query = pd.read_csv(args.query,sep="\t",header=None)
+        self.query = pd.read_csv(args.query,sep="\t")
         self.query.columns = ['qid','text']
         self.query.index = self.query.qid
         self.query.pop('qid')
-        self.top1000 = pd.read_csv(args.top1000, sep="\t",header=None)
+        self.top1000 = pd.read_csv(args.top1000, sep="\t")
         self.top1000.columns=['qid','pid','index', 'score']
         self.top1000 = list(self.top1000.groupby("qid"))
         self.len = len(self.top1000)
         self.min_index = args.min_index
         self.max_index = args.max_index
         qrels={}
-        with open(args.qrels,'r') as f:
+        with f(args.qrels,'r') as f:
             lines = f.readlines()
-            for line in lines:
+            for line in lines[1:]:
                 qid,pid = line.split()
                 qid=int(qid)
                 pid=int(pid)
@@ -161,16 +161,16 @@ class CrossEncoderDevDataset(Dataset):
         except:
             self.rank = self.n_procs = 0
         self.args = args
-        self.collection = pd.read_csv(args.collection,sep="\t",header=None, quoting=3)
+        self.collection = pd.read_csv(args.collection,sep="\t", quoting=3)
         self.collection.columns=['pid', 'para']
         self.collection = self.collection.fillna("NA")
         self.collection.index = self.collection.pid 
         self.collection.pop('pid')
-        self.query = pd.read_csv(args.dev_query,sep="\t",header=None)
+        self.query = pd.read_csv(args.dev_query,sep="\t")
         self.query.columns = ['qid','text']
         self.query.index = self.query.qid
         self.query.pop('qid')
-        self.top1000 = pd.read_csv(args.dev_top1000, sep="\t",header=None)
+        self.top1000 = pd.read_csv(args.dev_top1000, sep="\t")
         self.num_samples = len(self.top1000)
 
 
@@ -205,16 +205,16 @@ class DualEncoderTrainDataset(Dataset):
         except:
             self.rank = self.n_procs = 0
         self.args = args
-        self.collection = pd.read_csv(args.collection,sep="\t",header=None, quoting=3)
+        self.collection = pd.read_csv(args.collection,sep="\t", quoting=3)
         self.collection.columns=['pid','para']
         self.collection = self.collection.fillna("NA")
         self.collection.index = self.collection.pid 
         self.collection.pop('pid')
-        self.query = pd.read_csv(args.query,sep="\t",header=None)
+        self.query = pd.read_csv(args.query,sep="\t")
         self.query.columns = ['qid','text']
         self.query.index = self.query.qid
         self.query.pop('qid')
-        self.top1000 = pd.read_csv(args.top1000, sep="\t",header=None)
+        self.top1000 = pd.read_csv(args.top1000, sep="\t")
         if len(self.top1000.columns)==3:
             self.top1000.columns=['qid','pid','index']
         else:
@@ -226,7 +226,7 @@ class DualEncoderTrainDataset(Dataset):
         qrels={}
         with open(args.qrels,'r') as f:
             lines = f.readlines()
-            for line in lines:
+            for line in lines[1:]:
                 qid,pid = line.split()
                 qid=int(qid)
                 pid=int(pid)
