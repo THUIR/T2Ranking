@@ -160,7 +160,6 @@ def validate_multi_gpu(model, query_loader, passage_loader, epoch, args):
             print("*"*50)
             best_mrr = mrr
             for part in range(world_size):
-                os.rename('output/_para.index.part%d'%part, 'output/para.index.part%d'%part)
                 os.rename('output/_para.emb.part%d.npy'%part, 'output/para.emb.part%d.npy'%part)
             torch.save(model.state_dict(), "output/best.p")
         seconds = time.time()-local_start
