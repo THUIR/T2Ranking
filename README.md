@@ -158,7 +158,7 @@ ndcg_cut_100            all     0.4705
 
 DPR retrieved+CE reranked on DEV set
 
-The reranked run file is placed in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dpr-retrieved-top1000.tsv)
+The reranked run file is placed in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dev.dpr.tsv)
 ```bash
 #####################
 MRR @10: 0.5508822816845231
