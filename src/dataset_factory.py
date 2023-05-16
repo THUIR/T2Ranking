@@ -34,12 +34,6 @@ class PassageDataset(Dataset):
 
     def _collate_fn(self, psgs):
         p_records = self.tokenizer(psgs, padding=True, truncation=True, return_tensors="pt", max_length=self.args.p_max_seq_len)
-        if self.args.q_gen:
-            prompt = "The generated query is "+self.tokenizer.mask_token*(self.args.q_max_seq_len-6)
-            q_gens = [prompt]*len(psgs)
-            p_de_records = self.tokenizer(psgs, q_gens, padding=True, truncation='only_first', return_tensors="pt", max_length=self.args.max_seq_len)
-            p_records['decoder_input_ids'] = p_de_records['input_ids']
-            p_records['decoder_attention_mask'] = p_de_records['attention_mask']
         return p_records
 
     def __getitem__(self, idx):

@@ -48,6 +48,7 @@ def define_args():
     parser.add_argument('--report', type=int, default=1)
     parser.add_argument('--epoch', type=int, default=3)
     parser.add_argument('--qrels', type=str, default="/home/dongqian06/hdfs_data/data_train/qrels.train.debug.tsv")
+    parser.add_argument('--dev_qrels', type=str, default="/home/dongqian06/hdfs_data/data_train/qrels.train.debug.tsv")
     parser.add_argument('--top1000', type=str, default="/home/dongqian06/codes/anserini/runs/run.msmarco-passage.train.debug.tsv")
     parser.add_argument('--collection', type=str, default="/home/dongqian06/hdfs_data/data_train/marco/collection.debug.tsv")
     parser.add_argument('--query', type=str, default="/home/dongqian06/hdfs_data/data_train/train.query.debug.txt")
@@ -56,6 +57,7 @@ def define_args():
     parser.add_argument('--max_index', type=int, default=256)
     parser.add_argument('--sample_num', type=int, default=256)
     parser.add_argument('--num_labels', type=int, default=1)
+    parser.add_argument('--local-rank', type=int, default=0)
     parser.add_argument('--local_rank', type=int, default=0)
     parser.add_argument('--fp16', type=bool, default=True)
     parser.add_argument('--gradient_checkpoint', type=bool, default=False)
@@ -132,9 +134,11 @@ def validate_multi_gpu(model, query_loader, passage_loader, epoch, args):
             para_embs.append(p_reps.cpu().detach().numpy())
     torch.distributed.barrier() 
     para_embs = np.concatenate(para_embs, axis=0)
+    # para_embs = np.load('output/_para.emb.part%d.npy'%local_rank)
     print("predict embs cnt: %s" % len(para_embs))
-    engine = build_engine(para_embs, 768)
-    faiss.write_index(engine, _output_file_name)
+    # engine = build_engine(para_embs, 768)
+    # faiss.write_index(engine, _output_file_name)
+    engine = torch.from_numpy(para_embs).cuda()
     np.save('output/_para.emb.part%d.npy'%local_rank, para_embs)
     print('create index done!')
     qid_list = load_qid(args.dev_query)
@@ -146,7 +150,7 @@ def validate_multi_gpu(model, query_loader, passage_loader, epoch, args):
             f_list.append('output/res.top%d.part%d.step%d' % (top_k, part, epoch))
         shift = np.load("output/_para.emb.part0.npy").shape[0]
         merge(world_size, shift, top_k, epoch)
-        metrics = calc_mrr(args.qrels, 'output/res.top%d.step%d'%(top_k, epoch))
+        metrics = calc_mrr(args.dev_qrels, 'output/res.top%d.step%d'%(top_k, epoch))
         for run in f_list:
             os.remove(run)
         mrr = metrics['MRR @10']

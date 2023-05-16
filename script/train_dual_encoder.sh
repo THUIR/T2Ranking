@@ -1,11 +1,12 @@
 #!/bin/bash
 dataset=marco
 sample_num=2
-batch_size=128
+batch_size=64
 echo "batch size ${batch_size}"
 max_index=200
 retriever_model_name_or_path=checkpoint/bert-base-chinese/
 top1000=data/train.mined.tsv
+warm_start_from=data/dual-encoder.p
 learning_rate=2e-5
 ### 下面是永远不用改的
 dev_batch_size=256
@@ -16,6 +17,7 @@ p_max_seq_len=300
 dev_query=data/queries.dev.tsv
 collection=data/collection.tsv
 qrels=data/qrels.retrieval.train.tsv
+dev_qrels=data/qrels.retrieval.dev.tsv
 query=data/queries.train.tsv
 warmup_proportion=0.1
 eval_step_proportion=0.01
@@ -39,6 +41,7 @@ python -m torch.distributed.launch \
     --eval_step_proportion=${eval_step_proportion} \
     --report=${report_step} \
     --qrels=${qrels} \
+    --dev_qrels=${dev_qrels} \
     --query=${query} \
     --dev_query=${dev_query} \
     --collection=${collection} \
