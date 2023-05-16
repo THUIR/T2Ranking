@@ -164,7 +164,7 @@ class CrossEncoderDevDataset(Dataset):
         self.query.columns = ['qid','text']
         self.query.index = self.query.qid
         self.query.pop('qid')
-        self.top1000 = pd.read_csv(args.dev_top1000, sep="\t")
+        self.top1000 = pd.read_csv(args.dev_top1000, sep="\t", header=None)
         self.num_samples = len(self.top1000)
 
 

@@ -3,7 +3,7 @@ dataset=marco
 sample_num=64
 batch_size=16
 echo "batch size ${batch_size}"
-dev_batch_size=256
+dev_batch_size=1024
 min_index=0
 max_index=256
 max_seq_len=332
@@ -11,10 +11,12 @@ q_max_seq_len=32
 p_max_seq_len=128
 model_name_or_path=checkpoint/bert-base-chinese/
 top1000=data/train.mined.tsv
+warm_start_from=data/cross-encoder.p
 dev_top1000=data/dpr-retrieved-top1000.tsv
 dev_query=data/queries.dev.tsv
 collection=data/collection.tsv
 qrels=data/qrels.retrieval.train.tsv
+dev_qrels=data/qrels.retrieval.dev.tsv
 query=data/queries.train.tsv
 learning_rate=3e-5
 ### 下面是永远不用改的
@@ -38,6 +40,7 @@ python -m torch.distributed.launch \
     --eval_step_proportion=${eval_step_proportion} \
     --report=${report_step} \
     --qrels=${qrels} \
+    --dev_qrels=${dev_qrels} \
     --query=${query} \
     --dev_query=${dev_query} \
     --collection=${collection} \

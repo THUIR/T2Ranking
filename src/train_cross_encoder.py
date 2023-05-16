@@ -50,6 +50,7 @@ def define_args():
     parser.add_argument('--report', type=int, default=1)
     parser.add_argument('--epoch', type=int, default=3)
     parser.add_argument('--qrels', type=str, default="../../data/marco/qrels.train.debug.tsv")
+    parser.add_argument('--dev_qrels', type=str, default="../../data/marco/qrels.train.debug.tsv")
     parser.add_argument('--top1000', type=str, default="../../data/marco/run.msmarco-passage.train.debug.tsv")
     parser.add_argument('--dev_top1000', type=str, default="../../data/marco/run.msmarco-passage.train.debug.tsv")
     parser.add_argument('--collection', type=str, default="../../data/marco/collection.debug.tsv")
@@ -59,6 +60,7 @@ def define_args():
     parser.add_argument('--max_index', type=int, default=256)
     parser.add_argument('--sample_num', type=int, default=128)
     parser.add_argument('--num_labels', type=int, default=1)
+    parser.add_argument('--local-rank', type=int, default=0)
     parser.add_argument('--local_rank', type=int, default=0)
     parser.add_argument('--fp16', type=bool, default=True)
     parser.add_argument('--gradient_checkpoint', type=bool, default=True)
@@ -147,7 +149,7 @@ def validate_multi_gpu(model, dev_loader, epoch, args):
         torch.distributed.barrier()
         if local_rank==0:
             merge(epoch)
-            metrics = calc_mrr(args.qrels, 'output/res.step-%d'%epoch)
+            metrics = calc_mrr(args.dev_qrels, 'output/res.step-%d'%epoch)
             mrr = metrics['MRR @10']
             if mrr>best_mrr:
                 print("*"*50)
