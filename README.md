@@ -115,7 +115,7 @@ recall@50: 0.4942572226146033
 #####################
 ```
 
-DPR w/o hard negatives on DEV set
+DPR with BM25 negatives on DEV set
 
 ```bash
 #####################
@@ -127,7 +127,7 @@ recall@50: 0.7099350889583964
 #####################
 ```
 
-DPR w/ hard negatives on DEV set
+DPR trained with self-mined hard negatives on DEV set
 
 ```bash
 #####################
