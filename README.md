@@ -133,6 +133,8 @@ recall@50: 0.7327044025157232
 ```
 
 BM25 retrieved+CE reranked on DEV set
+
+The parameters are stored in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/cross-encoder.p)
 ```bash
 #####################
 MRR @10: 0.5188107959009376
@@ -147,6 +149,8 @@ ndcg_cut_100            all     0.4705
 ```
 
 DPR retrieved+CE reranked on DEV set
+
+The parameters are stored in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/cross-encoder.p)
 ```bash
 #####################
 MRR @10: 0.5508822816845231
