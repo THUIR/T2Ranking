@@ -107,6 +107,7 @@ recall@50: 0.4942572226146033
 ```
 
 DPR w/o hard negatives on DEV set
+
 The parameters are stored in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dual-encoder-trained-without-hard-negatives.p)
 ```bash
 #####################
@@ -119,6 +120,7 @@ recall@50: 0.7099350889583964
 ```
 
 DPR w/ hard negatives on DEV set
+
 The parameters are stored in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dual-encoder-trained-with-hard-negatives.p)
 ```bash
 #####################
