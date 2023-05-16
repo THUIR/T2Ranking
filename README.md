@@ -115,7 +115,7 @@ recall@50: 0.4942572226146033
 #####################
 ```
 
-DPR with BM25 negatives on DEV set
+DPR trained with BM25 negatives on DEV set
 
 ```bash
 #####################
