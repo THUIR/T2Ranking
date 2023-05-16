@@ -95,6 +95,15 @@ After training the model, you can evaluate the model by running the following co
 python src/convert2trec.py output/res.step-20 && python src/msmarco_eval.py data/qrels.retrieval.dev.tsv output/res.step-20.trec && path_to/trec_eval -m ndcg_cut.5 data/qrels.dev.tsv res.step-20.trec
 ```
 
+We have uploaded some checkpoints to Huggingface Hub.
+
+| Model              | Description                                               | Link                                                         |
+| ------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
+| dual-encoder 1     | dual-encoder trained with bm25 negatives             | [DE1](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dual-encoder-trained-without-hard-negatives.p)    |
+| dual-encoder 2     | dual-encoder trained with self-mined hard negatives  | [DE2](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dual-encoder-trained-with-hard-negatives.p) |
+| cross-encoder      | cross-encoder trained with self-mined hard negatives | [CE](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/cross-encoder.p)                     |
+
+
 BM25 on DEV set
 ```bash
 #####################
@@ -108,7 +117,6 @@ recall@50: 0.4942572226146033
 
 DPR w/o hard negatives on DEV set
 
-The parameters are stored in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dual-encoder-trained-without-hard-negatives.p)
 ```bash
 #####################
 MRR @10: 0.4856112079562753
@@ -121,7 +129,6 @@ recall@50: 0.7099350889583964
 
 DPR w/ hard negatives on DEV set
 
-The parameters are stored in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dual-encoder-trained-with-hard-negatives.p)
 ```bash
 #####################
 MRR @10: 0.5166915171959451
@@ -132,11 +139,10 @@ recall@50: 0.7327044025157232
 #####################
 ```
 
-The parameters of corss-encoder are stored in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/cross-encoder.p)
 
 BM25 retrieved+CE reranked on DEV set
 
-The reranked run file is placed in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dpr-retrieved-top1000.tsv)
+The reranked run file is placed in [here.](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dev.bm25.tsv)
 ```bash
 #####################
 MRR @10: 0.5188107959009376
