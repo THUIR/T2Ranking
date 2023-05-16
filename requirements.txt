@@ -1,0 +1,12 @@
+faiss_cpu==1.7.4
+faiss_gpu==1.7.2
+numpy==1.24.3
+pandas==2.0.1
+pytorch_pretrained_bert==0.6.2
+scikit_learn==1.2.2
+six==1.15.0
+six==1.11.0
+torch==2.0.0
+torch_optimizer==0.3.0
+tqdm==4.65.0
+transformers==4.28.1
