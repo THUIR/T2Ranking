@@ -99,7 +99,7 @@ We have uploaded some checkpoints to Huggingface Hub.
 
 | Model              | Description                                               | Link                                                         |
 | ------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
-| dual-encoder 1     | dual-encoder trained with bm25 negatives             | [DE1](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dual-encoder-trained-without-hard-negatives.p)    |
+| dual-encoder 1     | dual-encoder trained with bm25 negatives             | [DE1](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dual-encoder-trained-with-bm25-negatives.p)    |
 | dual-encoder 2     | dual-encoder trained with self-mined hard negatives  | [DE2](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/dual-encoder-trained-with-hard-negatives.p) |
 | cross-encoder      | cross-encoder trained with self-mined hard negatives | [CE](https://huggingface.co/datasets/THUIR/T2Ranking/blob/main/data/cross-encoder.p)                     |
 
